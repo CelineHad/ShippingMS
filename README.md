@@ -3,7 +3,7 @@
 
 <br>
 
-###Used Software Technologies :
+### Used Software Technologies :
 1. #### MYSQL Database 
 2. #### inteliJ 
 3. #### Spring boot framework
@@ -23,10 +23,10 @@
 
 <br>
 
-###Design Pattern:
-####I used factory method design pattern because the shipment type won't be specified before runtime 
+### Design Pattern:
+#### I used factory method design pattern because the shipment type won't be specified before runtime 
 
 <br>
 
-###Testing :
-####I used Junit5 and Mockito to test the API
+### Testing :
+#### I used Junit5 and Mockito to test the API
