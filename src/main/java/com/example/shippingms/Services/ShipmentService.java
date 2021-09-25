@@ -17,21 +17,27 @@ public class ShipmentService {
     @Autowired
     UPSRepo upsRepo;
 
-    public boolean addNewShipment(FedEx fedex){
-        if(!fedex.equals("fedexGround")||!fedex.equals("fedexAIR"))
+    public boolean addNewShipmentFedex(FedEx fedex){
+        if( fedex.getCarrierServiceID().equals("fedexGround") || fedex.getCarrierServiceID().equals("fedexAIR"))
         {
-            return false;
+            FedEx fed=fedexRepo.save(fedex);
+            if(fed==fedex){
+                return true;
         }
-        fedexRepo.save(fedex);
-        return true;
+       }
+        return false;
     }
 
     public boolean addNewShipmentups(UPS ups){
-        if(!ups.equals("UPSExpress")||!ups.equals("UPS2DAY"))
+        if(ups.getShipmentServiceID().equals("UPSExpress")||ups.getShipmentServiceID().equals("UPS2DAY"))
         {
-            return false;
+            UPS ups1=upsRepo.save(ups);
+            if(ups1==ups)
+            {
+                return true;
+            }
         }
-        upsRepo.save(ups);
-        return true;
+
+        return false;
     }
 }

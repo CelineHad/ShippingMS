@@ -3,7 +3,6 @@ package com.example.shippingms.Controllers;
 import com.example.shippingms.Beans.*;
 import com.example.shippingms.Services.ShipmentService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +24,7 @@ public class ShipmentController {
         {
             factory=new FedExFactory();
             shipment = factory.create(shipmentDetails);
-            boolean result=(service.addNewShipment((FedEx) shipment));
+            boolean result=(service.addNewShipmentFedex((FedEx) shipment));
             if(result)
             {
                 return new ResponseEntity("shipment has been placed successfully", HttpStatus.OK);
