@@ -18,12 +18,12 @@ public class ShipmentController {
 
     @PostMapping("/addnewshipment/{ID}")
     public ResponseEntity addNewShipment(@RequestBody String shipmentDetails, @PathVariable ("ID") String type) throws JsonProcessingException {
-        Factory factory;
+        ShipmentFactory factory=new ShipmentFactory();
         shipment shipment;
+        shipment=factory.create(type,shipmentDetails);
+
         if(type.equals("fedex"))
         {
-            factory=new FedExFactory();
-            shipment = factory.create(shipmentDetails);
             boolean result=(service.addNewShipmentFedex((FedEx) shipment));
             if(result)
             {
@@ -37,8 +37,6 @@ public class ShipmentController {
         }
         else if (type.equals("ups"))
         {
-           factory=new UPSFactory();
-            shipment= factory.create(shipmentDetails);
             boolean result=(service.addNewShipmentups((UPS) shipment));
             if(result)
             {
